@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 import os, requests
 
 
@@ -12,14 +11,11 @@ def fetch_books_by_title(title_name):
     return json output based on books
     
     '''
-    #loding my API key from .env file
-    load_dotenv()
-
     #setting up url parameters, setting maxResults so only 5 book are returned
     params = {
         'q':f'intitle:{title_name}',
         'maxResults':'5',
-        'key': os.getenv('GOOGLE_API_KEY')
+        'key': os.environ.get('GOOGLE_API_KEY')
     }
 
     #running a try except if their is an issue with API Request
@@ -38,13 +34,10 @@ def fetch_books_by_author(author_name):
         This fuction will fetch the books data via the author name.
 
     '''
-
-    load_dotenv()
-
     params = {
         'q':f'inauthor:{author_name}',
         'maxResults':'40', #This is the max number of results that google books API will return, anything above will give an error.
-        'key':os.getenv('GOOGLE_API_KEY')
+        'key':os.environ.get('GOOGLE_API_KEY')
     }
 
     try:

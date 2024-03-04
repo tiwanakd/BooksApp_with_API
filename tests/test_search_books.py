@@ -16,7 +16,7 @@ def test_fetch_books_by_title(mock_get):
     result = search_books.fetch_books_by_title('The Alchemist')
     
     # Assert the result
-    assert result == {}
+    assert result == {"items": [{"volumeInfo": {"title": "The Alchemist", "authors": ["Paulo Coelho"], "publishedDate": "2015-02-24"}}]}
 
 @mock.patch("requests.get")
 def test_fetch_books_by_author(mock_get):

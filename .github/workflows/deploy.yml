@@ -10,3 +10,9 @@ jobs:
               run: pip install -r requirements.txt
             - name: Test Code
               run: pytest 
+    deploy:
+        runs-on: ubuntu-latest
+        needs: test
+        steps:
+            - name: Deply
+              run: echo "Deploying to Github.."
